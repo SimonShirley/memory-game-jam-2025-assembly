@@ -1,6 +1,6 @@
 # Memory Game
 A simple tile matching game for the Commodore 64, written in 6502 assembly.
-This is a port of the BASIC version, submitted separately.
+This is a port of the [BASIC version](https://github.com/SimonShirley/memory-game-jam-2025), submitted separately.
 
 This game is a submission for the [Retro Programmers Inside (RPI) and Phaze101 Game Jam](https://itch.io/jam/memorygame).
 
