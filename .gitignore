@@ -1,0 +1,23 @@
+# Build and distribution files
+build/**
+dist/**
+
+# Output files
+*.zip
+*.d64
+
+# OS-like files
+.DS_Store
+Thumbs.db
+
+# Visual Studio Code Files
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+!*.code-workspace
+
+# Built Visual Studio Code Extensions
+*.vsix

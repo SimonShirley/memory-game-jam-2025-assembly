@@ -1,0 +1,13 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "dasm Build",
+            "command": "\"/Users/altofluff/Projects/tools/dasm/v2.20.14.1/dasm\" \"${workspaceFolder}/src/memory-game.asm\" -f1 -o${workspaceFolder}/build/memory-game-asm.prg -s${workspaceFolder}/build/memory-game-asm.sym -I${workspaceFolder}/src",
+            "problemMatcher": []
+        }
+    ]
+}
