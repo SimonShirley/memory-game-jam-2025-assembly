@@ -117,10 +117,8 @@ Restart_Game:
 
 .Skip_Resetting_Computer_Memory:
 	JSR Initialise_Board_Tile_State
-	JSR Print_Shuffling_Box
 	JSR Pick_Tiles_For_Board
 
-	JSR Clear_Shuffling_Box
 	JSR Print_Covered_Board_Tiles
 	JSR Clear_Cursor_Location
 	JSR Highlight_Cursor_Location
@@ -1531,7 +1529,7 @@ Get_Random_Number:
     jsr $B391 ; A(h),Y(L) - FAC
 
     ; Store our floating point number
-    ; temporarily for later arithmatic
+    ; temporarily for later arithmetic
     ldx #<rnd_flt
     ldy #>rnd_flt
     jsr $BBD4   ; store FAC to rnd_flt
@@ -1712,8 +1710,6 @@ Pick_Tiles_For_Board:
 	LDX #0
 
 Pick_Tiles_For_Board_Outer_Loop:
-	; TODO - Add sound
-
 	STX .Temp_X
 
 	LDA #0
@@ -1761,7 +1757,7 @@ Pick_Tiles_For_Board_Outer_Loop:
 ; Subroutine - Print_Text_To_Screen
 ; Parameters:
 ;	- A - Start address of text (hi-byte)
-;	- X - Start address of text (hi-byte)
+;	- X - Start address of text (lo-byte)
 ;
 ; Affects:
 ;	- A, Z
@@ -2095,33 +2091,6 @@ Print_Score_Panel:
 	RTS
 
 
-
-;============================================================================
-; Subroutine - Print_Shuffling_Box
-; Parameters:
-;	- none
-;
-; Used to pre-popluate board variables when the size of the board changes
-;============================================================================
-
-	SUBROUTINE
-
-Print_Shuffling_Box:
-	RTS
-
-;============================================================================
-; Subroutine - Clear_Shuffling_Box
-; Parameters:
-;	- none
-;
-; Used to pre-popluate board variables when the size of the board changes
-;============================================================================
-
-	SUBROUTINE
-
-Clear_Shuffling_Box:
-	RTS
-
 ;============================================================================
 ; Subroutine - Print_Covered_Board_Tiles
 ; Parameters:
@@ -2277,9 +2246,6 @@ Print_Covered_Board_Tiles:
 ;
 ; Affects:
 ;	- A
-;
-; Remarks:
-;	Use 0 to acts as string terminator
 ;============================================================================
 
 	SUBROUTINE
@@ -2316,9 +2282,6 @@ Setup_Tile_Shuffle_Sound:
 ;
 ; Affects:
 ;	- A
-;
-; Remarks:
-;	Use 0 to acts as string terminator
 ;============================================================================
 	SUBROUTINE
 
@@ -2340,9 +2303,6 @@ Play_Cursor_Positive_Sound:
 ;
 ; Affects:
 ;	- A
-;
-; Remarks:
-;	Use 0 to acts as string terminator
 ;============================================================================
 	SUBROUTINE
 
@@ -2359,14 +2319,11 @@ Play_Cursor_Negative_Sound:
 	RTS
 
 ;============================================================================
-; Subroutine - Play_Cursor_Negative_Sound
+; Subroutine - Play_Cursor_Select_Sound
 ; Parameters:
 ;
 ; Affects:
 ;	- A
-;
-; Remarks:
-;	Use 0 to acts as string terminator
 ;============================================================================
 	SUBROUTINE
 
@@ -2402,7 +2359,7 @@ Play_Cursor_Select_Sound:
 	LDY #$80
     JSR Delay
     
-    ;REM Stop Sound
+    ; Stop Sound
 	LDA #$80
 	STA SID_Location + 4
 
@@ -2418,9 +2375,6 @@ Play_Cursor_Select_Sound:
 ;
 ; Affects:
 ;	- A
-;
-; Remarks:
-;	Use 0 to acts as string terminator
 ;============================================================================
 	SUBROUTINE
 
@@ -2454,9 +2408,6 @@ Play_Player_1_Match_Sound:
 ;
 ; Affects:
 ;	- A
-;
-; Remarks:
-;	Use 0 to acts as string terminator
 ;============================================================================
 	SUBROUTINE
 
@@ -2490,9 +2441,6 @@ Play_Player_2_Match_Sound:
 ;
 ; Affects:
 ;	- A, X, Y
-;
-; Remarks:
-;	Use 0 to acts as string terminator
 ;============================================================================
 	SUBROUTINE
 
@@ -2548,9 +2496,6 @@ Play_Win_Jingle:
 ;
 ; Affects:
 ;	- A, X, Y
-;
-; Remarks:
-;	Use 0 to acts as string terminator
 ;============================================================================
 	SUBROUTINE
 
@@ -2570,7 +2515,7 @@ Play_Cursor_Sound:
     LDA #$0F
 	STA SID_Location + 24	
 
-    ;REM Start Sound
+    ; Start Sound
     LDA #$21
 	STA SID_Location + 4
 	
